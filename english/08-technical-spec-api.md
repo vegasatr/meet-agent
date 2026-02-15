@@ -1,5 +1,7 @@
 # Technical Specification: API Reference
 
+**Production Gateway API (base URL):** https://meet-agent-protocol.up.railway.app
+
 ## General requirements
 
 - JSON over HTTPS.

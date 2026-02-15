@@ -23,5 +23,6 @@
 
 Документация соответствует спецификации протокола **v1.9 (Core MVP)**.  
 Официальный канал: https://t.me/meetagent  
+Production Gateway API (базовый URL): **https://meet-agent-protocol.up.railway.app**  
 Версия: 1.0  
 Дата публикации: 14.02.2026

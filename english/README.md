@@ -23,5 +23,6 @@ Public documentation for the Meet Agent Protocol community, developers, and ecos
 
 Documentation corresponds to protocol specification **v1.9 (Core MVP)**.  
 Official channel: https://t.me/meetagent  
+Production Gateway API (base URL): **https://meet-agent-protocol.up.railway.app**  
 Version: 1.0  
 Published: 2026-02-14
