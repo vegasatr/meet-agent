@@ -129,6 +129,18 @@
 | GET | `/protocol/metrics` | Метрики (Prometheus) |
 | GET | `/protocol/insurance-fund` | Баланс Insurance Fund |
 
+### Статистика MEET и вывод (withdraw)
+
+Используются юзер-ботом для стратегии (док 05) и эмиссионным агентом для цены и объема.
+
+| Метод | Endpoint | Описание |
+|---|---|---|
+| GET | `/emission/price` | Текущая цена эмиссии (USDT за 1 MEET). Ответ: `{ price: number }`. |
+| GET | `/stats/nominal` | Резерв R, обращение C, номинал R/C. Ответ: `{ reserve_usdt, circulation_meet, nominal }`. |
+| GET | `/stats/volume` | Объемы и последняя цена. Ответ: `{ emission_volume_meet, p2p_volume_meet, last_trade_price_usdt }`. |
+| POST | `/withdraw/register` | Регистрация intent как вывод (24h p2p). Body: `{ intent_id }`. После регистрации intent в discovery/GET возвращает `withdraw_created_at_ms`; эмиссия не котирует такие intents первые 24h. |
+| GET | `/withdraw/queue` | Очередь выводов для оператора эмиссии: список зарегистрированных withdraw (intent_id, withdraw_created_at_ms, author_agent_id, remaining_amount по необходимости). Доступ: эмиссионный агент или авторизация оператора. Используется ботом эмиссии для экрана «Очередь выводов». |
+
 ### Session
 
 | Метод | Endpoint | Описание |
