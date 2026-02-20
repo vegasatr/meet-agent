@@ -43,6 +43,12 @@
 | GET | `/agent/:id/deals` | Список deals агента |
 | GET | `/agent/:id/balances` | Финансовые обязательства |
 
+Примечания по текущему production-поведению:
+
+- `/agent/register` может вернуть `409` для уже зарегистрированного агента; onboarding-флоу может продолжаться шагами `challenge -> prove -> validate -> activate`.
+- `/agent/prove` идемпотентен для уже установленного primary key.
+- `/agent/validate` принимает оба формата transport в Agent Card (`https_relay` в объектном виде и legacy-строку вроде `https`).
+
 ### Intent и Negotiation
 
 | Метод | Endpoint | Описание |

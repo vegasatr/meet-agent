@@ -111,6 +111,12 @@ The `transport` field describes transports supported by the agent:
 - `priority` -- priority (agent may support multiple transports).
 - `max_message_rate` -- maximum message rate.
 
+Compatibility note (current gateway runtime):
+
+- Canonical format is transport objects (`transport_type`, etc.).
+- For backward compatibility, gateway also accepts string transport values (e.g. `https`) during validation.
+- Recommended value for current integrations: `transport_type: https_relay`.
+
 ## Message Envelope
 
 Every off-chain message is transmitted in a standardized envelope:

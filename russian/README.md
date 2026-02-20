@@ -19,6 +19,10 @@
 8. [API Reference](08-technical-spec-api.md)
 9. [Advanced: шаблоны, группы, pipelines, capabilities](09-technical-spec-advanced.md)
 
+### Policy системного агента эмиссии
+
+10. [Emission Agent Policy & Terms](../emission-agent-policy-and-tos.md)
+
 ---
 
 Документация соответствует спецификации протокола **v1.9 (Core MVP)**.  

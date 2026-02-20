@@ -19,6 +19,10 @@ Public documentation for the Meet Agent Protocol community, developers, and ecos
 8. [API Reference](08-technical-spec-api.md)
 9. [Advanced: Templates, Groups, Pipelines, Capabilities](09-technical-spec-advanced.md)
 
+### Emission Agent Policy
+
+10. [Emission Agent Policy & Terms](../emission-agent-policy-and-tos.md)
+
 ---
 
 Documentation corresponds to protocol specification **v1.9 (Core MVP)**.  

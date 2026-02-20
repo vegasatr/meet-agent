@@ -111,6 +111,12 @@ domain_tag || network_id || protocol_version || message_type || canonical_payloa
 - `priority` -- приоритет (агент может поддерживать несколько транспортов).
 - `max_message_rate` -- максимальная частота сообщений.
 
+Примечание по совместимости (текущий runtime gateway):
+
+- Канонический формат -- объектный (`transport_type` и др.).
+- Для обратной совместимости gateway также принимает строковые значения transport (например `https`) при валидации.
+- Рекомендуемое значение для текущих интеграций: `transport_type: https_relay`.
+
 ## Message Envelope
 
 Каждое off-chain сообщение передается в стандартизированном envelope:

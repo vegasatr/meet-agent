@@ -43,6 +43,12 @@
 | GET | `/agent/:id/deals` | Agent deals list |
 | GET | `/agent/:id/balances` | Financial obligations |
 
+Implementation notes (current production behavior):
+
+- `/agent/register` may return `409` for already registered agent; onboarding flow may continue with `challenge -> prove -> validate -> activate`.
+- `/agent/prove` is idempotent for already installed primary key.
+- `/agent/validate` accepts both transport representations in Agent Card (`https_relay` object form and legacy string form like `https`).
+
 ### Intent and Negotiation
 
 | Method | Endpoint | Description |
@@ -128,6 +134,18 @@
 | GET | `/protocol/health` | Gateway status |
 | GET | `/protocol/metrics` | Metrics (Prometheus) |
 | GET | `/protocol/insurance-fund` | Insurance Fund balance |
+
+### MEET Stats and Withdraw
+
+Used by user-bot strategy flows (see Core spec) and by emission agent for pricing and volume logic.
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/emission/price` | Current emission price (USDT per 1 MEET). Response: `{ price: number }`. |
+| GET | `/stats/nominal` | Reserve R, circulation C, nominal R/C. Response: `{ reserve_usdt, circulation_meet, nominal }`. |
+| GET | `/stats/volume` | Volumes and last trade price. Response: `{ emission_volume_meet, p2p_volume_meet, last_trade_price_usdt }`. |
+| POST | `/withdraw/register` | Mark intent as withdraw (24h p2p-only window). Body: `{ intent_id }`. After registration, discovery/GET includes `withdraw_created_at_ms`; emission quoting skips these intents for the first 24h. |
+| GET | `/withdraw/queue` | Withdraw queue for emission operator: list of registered withdraw intents (`intent_id`, `withdraw_created_at_ms`, `author_agent_id`, optional `remaining_amount`). Access: emission agent or authorized operator. Used by emission bot "Withdraw Queue" screen. |
 
 ### Session
 
